@@ -1,0 +1,17 @@
+<?php
+if($this->getInfo()->getOrder() && $this->getInfo()->getOrder()->getState() != 'canceled'){
+	$html  = '<p>Pagamento via Cartão de Crédito</p>';
+	
+	if( $this->getInfo()->hasAdditionalInformation('valor_bruto') ) {
+		//$html  .= '<p><strong>Valor bruto:</strong> <span>' . $this->getInfo()->getAdditionalInformation('valor_bruto') . '</span></p>';
+	}
+	if( $this->getInfo()->hasAdditionalInformation('valor_liquido') ) {
+		//$html  .= '<p><strong>Valor líquido:</strong> <span>' . $this->getInfo()->getAdditionalInformation('valor_liquido') . '</span></p>';
+	}
+	if( $this->getInfo()->hasAdditionalInformation('parcelas') ) {
+		//$html  .= '<p><strong>Número de parcelas:</strong> <span>' . $this->getInfo()->getAdditionalInformation('parcelas') . '</span></p>';
+	}
+	
+    echo '<p>' . $html . '</p> <br>';	
+}
+?>

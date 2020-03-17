@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Z4money_Gateway>
+      <active>true</active>
+      <codePool>community</codePool>
+      <version>0.1.0</version>
+    </Z4money_Gateway>
+  </modules>
+</config>

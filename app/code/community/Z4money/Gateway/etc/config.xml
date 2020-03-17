@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Z4money_Gateway>
+      <version>0.1.0</version>
+    </Z4money_Gateway>
+  </modules>
+  <global>
+        <models>
+            <z4money_gateway>
+                <class>Z4money_Gateway_Model</class>
+            </z4money_gateway>
+        </models>
+        <blocks>
+            <z4money_gateway>
+                <class>Z4money_Gateway_Block</class>
+            </z4money_gateway>
+        </blocks>
+    <helpers>
+      <z4money_gateway>
+        <class>Z4money_Gateway_Helper</class>
+      </z4money_gateway>
+    </helpers>
+        <events>
+            <admin_system_config_changed_section_payment>
+                <observers>
+                    <Z4money_Gateway_Model_Observer>
+                        <type>singleton</type>
+                        <class>z4money_gateway/observer</class>
+                        <method>checkWebhook</method>
+                    </Z4money_Gateway_Model_Observer>
+                </observers>
+            </admin_system_config_changed_section_payment>
+        </events>
+  </global>
+
+    <admin>
+        <routers>
+            <z4money_gateway>
+                <use>admin</use>
+                <args>
+                    <module>Z4money_Gateway</module>
+                    <frontName>z4money_gateway</frontName>
+                </args>
+            </z4money_gateway>
+        </routers>
+    </admin>
+	
+    <frontend>
+        <routers>
+            <z4money_gateway>
+                <use>standard</use>
+                <args>
+                    <module>Z4money_Gateway</module>
+                    <frontName>z4money_gateway</frontName>
+                </args>
+            </z4money_gateway>
+        </routers>
+        <layout>
+            <updates>
+                <z4money_gateway>
+                    <file>z4money/gateway/z4money_gateway.xml</file>
+                </z4money_gateway>
+            </updates>
+        </layout>
+    </frontend>
+	
+    <default>
+        <payment>
+            <z4money_gateway module="z4money_gateway">
+				<active>1</active>
+				<model>z4money_gateway/payment</model>
+                <title>Z4money</title>
+                <allowspecific>0</allowspecific>
+			</z4money_gateway>
+			<z4money_gateway_cc module="z4money_gateway">
+				<active>1</active>
+				<model>z4money_gateway/cc</model>
+				<title>Cartão de crédito</title>
+				<payment_action>order</payment_action>
+				<allowspecific>0</allowspecific>
+                <creditcard_max_installments>10</creditcard_max_installments>
+                <creditcard_interest_rate>10</creditcard_interest_rate>
+                <creditcard_min_installment_value>5</creditcard_min_installment_value>
+                <creditcard_free_installments>1</creditcard_free_installments>
+			</z4money_gateway_cc>
+            <z4money_gateway_boleto module="z4money_gateway">
+				<active>1</active>
+				<model>z4money_gateway/boleto</model>
+                <title>Boleto bancário</title>
+                <payment_action>order</payment_action>
+				<allowspecific>0</allowspecific>
+				<order_status>pending</order_status>
+				<days_to_boleto_expire>5</days_to_boleto_expire>
+            </z4money_gateway_boleto>
+         </payment>
+    </default>
+</config> 

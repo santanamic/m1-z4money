@@ -1,0 +1,9 @@
+{
+    "name": "santanamic/m1-z4money",
+    "description": "Módulo oficial da Z4money para Magento 1.9.X",
+    "type": "magento-module",
+    "homepage": "https://github.com/santanamic/m1-z4money/",
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

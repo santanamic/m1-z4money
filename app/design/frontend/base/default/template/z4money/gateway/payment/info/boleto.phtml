@@ -1,0 +1,7 @@
+<?php
+if($this->getInfo()->getOrder() && $this->getInfo()->getOrder()->getState() != 'canceled'){
+	$html  = '<p>Pague o boleto para que sua compra seja aprovada.</p>';
+    echo '<p>' . $html . '</p> <br>';	
+	echo '<a class="button" href="'. $this->getInfo()->getAdditionalInformation('boleto_url') .'" target="_blank">Imprimir boleto</a>';
+}
+?>

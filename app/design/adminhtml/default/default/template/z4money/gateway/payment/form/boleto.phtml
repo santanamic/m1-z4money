@@ -1,0 +1,20 @@
+<ul class="form-list" id="payment_form_<?php echo $this->getMethodCode() ?>" style="display:none;">
+     <li>
+        <div class="input-box">
+			<br>
+            <div class="gn-osc-clear z4money-boleto-info-row">
+				<div class="z4money-boleto-image"><img src="<?php echo $this->getSkinUrl('images/z4money/icon-boleto.png') ?>" /></div>
+				<div class="z4money-boleto-info">O pedido será confirmado somente após a aprovação do pagamento.<p>Depois de "Enviar o pedido", você poderá imprimir o Boleto bancário na página de pedido, onde poderá imprimir e pagar no seu Internet Banking ou em um varejista de loteria.</div>
+			</div>
+        </div>
+    </li>
+	<br>
+</ul>
+
+<style>
+
+.z4money-boleto-image {float:left; width: 65px; height: 35px;margin-right: 10px;}
+.z4money-boleto-image img {padding: 5px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; position: relative; background-color: #EDEDED;}
+.z4money-boleto-info {overflow:hidden; height: auto; width: auto;}
+
+</style>

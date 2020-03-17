@@ -1,0 +1,44 @@
+<div class="page-title">
+    <h1>Seu pedido foi recebido</h1>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<p><strong><?php echo $this->__('Obrigado por sua compra!') ?></strong></p>
+
+<?php if ($this->getOrderId()):?>
+<?php if ($this->getCanViewOrder()) :?>
+    <p><?php echo $this->__('Seu pedido # é: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></p>
+<?php  else :?>
+    <p><?php echo $this->__('Seu pedido # é: %s.', $this->escapeHtml($this->getOrderId())) ?>.</p>
+<?php endif;?>
+    <p><?php echo $this->__('Você receberá um e-mail de confirmação do pedido com detalhes do seu pedido e um link para acompanhar seu progresso.') ?></p>
+<?php if ($this->getViewOrder() && $this->getCanPrintOrder()) :?>
+    <p>
+        <?php echo $this->__('Clique <a href="%s" onclick="this.target=\'_blank\'">aqui para</a> imprimir uma cópia da confirmação do seu pedido.', $this->getPrintUrl()) ?>
+        <?php echo $this->getChildHtml() ?>
+    </p>
+<?php endif;?>
+<?php endif;?>
+
+<?php if ($this->getAgreementRefId()): ?>
+    <p><?php echo $this->__('Seu contrato de faturamento # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
+<?php endif;?>
+
+<?php
+	$orderId = Mage::getSingleton('checkout/session')->getLastOrderId();
+	if($orderId){
+		
+		$order = Mage::getModel('sales/order')->load($orderId);
+		$payment = $order->getPayment();
+		
+		if($payment->hasAdditionalInformation('boleto_url')){
+			echo '<center>';
+			$html  = '<br><p>Pague o boleto para que sua compra seja aprovada.</p></br>';
+			$html .= '<p><iframe src="' . $payment->getAdditionalInformation('boleto_url') . '" style="width:80%; height:1000px;border: solid 1px #eee;"></iframe></p>';
+			echo '<p>' . $html . '</p>';
+				
+			echo '<a class="button" href="'. $payment->getAdditionalInformation('boleto_url') .'" target="_blank">Imprimir boleto</a>';
+			
+			echo '<br /><br /></center>';
+		}
+	} 
+?>

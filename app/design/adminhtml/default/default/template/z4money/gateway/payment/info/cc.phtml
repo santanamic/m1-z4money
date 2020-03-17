@@ -1,0 +1,19 @@
+<p><?php echo $this->getMethod()->getTitle(); ?></p>
+
+<?php
+if($this->getInfo()->getOrder() && $this->getInfo()->getOrder()->getState() != 'canceled'){
+	echo '<p>Compra via Z4money Gateway</p>';
+	if( $this->getInfo()->hasAdditionalInformation('payment_id') ) {
+		echo '<p><strong>ID do Pagamento:</strong> <span>' . $this->getInfo()->getAdditionalInformation('payment_id') . '</span></p>';
+	}
+	if( $this->getInfo()->hasAdditionalInformation('valor_bruto') ) {
+		//echo '<p><strong>Valor bruto:</strong> <span>' . $this->getInfo()->getAdditionalInformation('valor_bruto') . '</span></p>';
+	}
+	if( $this->getInfo()->hasAdditionalInformation('valor_liquido') ) {
+		//echo '<p><strong>Valor líquido:</strong> <span>' . $this->getInfo()->getAdditionalInformation('valor_liquido') . '</span></p>';
+	}
+	if( $this->getInfo()->hasAdditionalInformation('parcelas') ) {
+		//echo '<p><strong>Número de parcelas:</strong> <span>' . $this->getInfo()->getAdditionalInformation('parcelas') . '</span></p>';
+	}	
+}
+?>

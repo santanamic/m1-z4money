@@ -1,0 +1,91 @@
+<ul class="form-list" id="payment_form_<?php echo $this->getMethodCode() ?>" style="display:none;">
+    <li>
+	<br>
+        <p class="required">* Campos obrigatórios</p>
+        <label for="z4money_holdername" class="required"><em>*</em>Nome impresso no cartão</label>
+        <div class="input-box">
+            <input type="text" id="z4money_holdername" name="z4money_holdername" class="z4money_holdername" />
+        </div>
+    </li>
+    <li>
+        <label for="z4money_ccnumber" class="required"><em>*</em>Número do Cartão</label>
+        <div class="input-box">
+            <input type="number" id="z4money_ccnumber" name="z4money_ccnumber" title="Número do Cartão" class="input-number z4money_ccnumber" autocomplete="off">
+        </div>
+    </li>
+    <li>
+        <label for="z4money_cccvv" class="required"><em>*</em>CVV</label>
+        <div class="input-box">
+            <input type="number" min="99" max="9999" id="z4money_cccvv" name="z4money_cccvv" title="Número de verificação" class="input-number z4money_cccvv" autocomplete="off">
+        </div>
+    </li>
+    <li>
+        <label for="z4money_ccexpiration" class="required"><em>*</em>Data de Validade</label>
+        <div class="input-box">
+            <div class="v-fix">
+                <select id="z4money_ccexpiration" name="z4money_ccexpiration" class="month z4money_ccexpiration" autocomplete="off">
+                    <option value="" selected="selected">Mês</option>
+                    <option value="1">01 - janeiro</option>
+                    <option value="2">02 - fevereiro</option>
+                    <option value="3">03 - março</option>
+                    <option value="4">04 - abril</option>
+                    <option value="5">05 - maio</option>
+                    <option value="6">06 - junho</option>
+                    <option value="7">07 - julho</option>
+                    <option value="8">08 - agosto</option>
+                    <option value="9">09 - setembro</option>
+                    <option value="10">10 - outubro</option>
+                    <option value="11">11 - novembro</option>
+                    <option value="12">12 - dezembro</option>
+                </select>
+            </div>
+            <div class="v-fix">
+                <select id="z4money_ccexpiration_yr" name="z4money_ccexpiration_yr" class="year z4money_ccexpiration_yr" autocomplete="off">
+                    <option value="" selected="selected">Ano</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
+                    <option value="2029">2029</option>
+                    <option value="2030">2030</option>
+                </select>
+            </div>
+        </div>
+    </li>
+    <li>
+        <label for="z4money_ccinstallments" class="required"><em>*</em>Número de parcelas</label>
+        <div class="input-box">
+            <?php echo $this->getMethod()->getInstallmentsHtml(); ?>
+        </div>
+		    <br>
+    </li>
+	</ul>
+
+<style>
+    .z4money-boleto-image {
+        float: left;
+        width: 65px;
+        height: 35px;
+        margin-right: 10px;
+    }
+    
+    .z4money-boleto-image img {
+        padding: 5px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        position: relative;
+        background-color: #EDEDED;
+    }
+    
+    .z4money-boleto-info {
+        overflow: hidden;
+        height: auto;
+        width: auto;
+    }
+</style>
